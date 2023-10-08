@@ -13,15 +13,21 @@ module.exports.updatePreferences = async (req, res) => {
     let updatedUser;
     switch (action) {
       case "add":
-        updatedUser = await User.updateOne(
+        updatedUser = await User.findOneAndUpdate(
           { _id: req.user.id },
-          { $push: { preferences: category } }
+          { $push: { preferences: category } },
+          {
+            new: true,
+          }
         );
         break;
       case "remove":
-        updatedUser = await User.updateOne(
+        updatedUser = await User.findOneAndUpdate(
           { _id: req.user.id },
-          { $pull: { preferences: category } }
+          { $pull: { preferences: category } },
+          {
+            new: true,
+          }
         );
         break;
     }
