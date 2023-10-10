@@ -1,7 +1,8 @@
 
 ---
 
-# Task Management API
+# News Aggregator API
+
 
 This API allows you to manage user registration, login, and access news based on user preferences.
 
