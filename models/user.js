@@ -26,6 +26,8 @@ const userSchema = new mongoose.Schema(
       type: [String],
       default: []
     },
+    favoriteNews: [{}],
+    readNews: [{}],
   },
   { timestamps: true }
 );

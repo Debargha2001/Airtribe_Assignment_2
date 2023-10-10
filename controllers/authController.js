@@ -61,7 +61,7 @@ module.exports.authMiddleware = async (req, res, next) => {
   try{
       if(req.headers && req.headers.authorization){
           const decoded = await promisify(jwt.verify)(req.headers.authorization, config.JWT_SECRET);
-          const user = await User.findById(decoded.id);
+          const user = await User.findById(decoded.id).select('-password');
 
           if(!user){
             return ErrResponse(res, 'The user belonging to this token does no longer exist', 404);
